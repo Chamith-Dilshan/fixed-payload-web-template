@@ -1,30 +1,29 @@
 import type { Metadata } from "next"
-
-import { cn } from "@/utilities/ui"
-import { Geist_Mono, Geist_Pixel } from "next/font/google"
 import React from "react"
 
 import { AdminBar } from "@/components/AdminBar"
 import { Footer } from "@/Footer/Component"
 import { Header } from "@/Header/Component"
-import { Providers } from "@/providers"
-import { InitTheme } from "@/providers/Theme/InitTheme"
 import { mergeOpenGraph } from "@/utilities/mergeOpenGraph"
 import { draftMode } from "next/headers"
+import { Roboto, Roboto_Mono, Roboto_Serif } from "next/font/google"
 
 import "./globals.css"
 import { getServerSideURL } from "@/utilities/getURL"
 
-const fontMono = Geist_Mono({
-  weight: ["400"],
-  subsets: ["latin"],
-  variable: "--font-mono",
-})
-
-const fontSans = Geist_Pixel({
-  weight: ["400"],
+const fontSans = Roboto({
   subsets: ["latin"],
   variable: "--font-sans",
+})
+
+const fontSerif = Roboto_Serif({
+  subsets: ["latin"],
+  variable: "--font-serif",
+})
+
+const fontMono = Roboto_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
 })
 
 export default async function RootLayout({
@@ -36,26 +35,23 @@ export default async function RootLayout({
 
   return (
     <html
-      className={cn("antialiased", fontSans.variable, fontMono.variable)}
+      className={`${fontSans.variable} ${fontSerif.variable} ${fontMono.variable} antialiased`}
       lang="en"
       suppressHydrationWarning
     >
       <head>
-        <InitTheme />
         <link href="/favicon.ico" rel="icon" sizes="32x32" />
         <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
       </head>
       <body>
-        <Providers>
-          <AdminBar
-            adminBarProps={{
-              preview: isEnabled,
-            }}
-          />
-          <Header />
-          {children}
-          <Footer />
-        </Providers>
+        <AdminBar
+          adminBarProps={{
+            preview: isEnabled,
+          }}
+        />
+        <Header />
+        {children}
+        <Footer />
       </body>
     </html>
   )

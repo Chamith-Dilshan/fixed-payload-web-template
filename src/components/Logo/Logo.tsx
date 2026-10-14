@@ -1,5 +1,5 @@
-import clsx from 'clsx'
 import React from 'react'
+import { clsx } from "cn";
 
 interface Props {
   className?: string
