@@ -301,3 +301,11 @@ You can also deploy your app manually, check out the [deployment documentation](
 ## Questions
 
 If you have any issues or questions, reach out to us on [Discord](https://discord.com/invite/payload) or start a [GitHub discussion](https://github.com/payloadcms/payload/discussions).
+
+
+
+
+alright you can use Eslint config inspector
+````text
+pnpm dlx eslint --inspect-config
+````

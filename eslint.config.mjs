@@ -1,17 +1,27 @@
-import { dirname } from 'path'
-import { fileURLToPath } from 'url'
-import { FlatCompat } from '@eslint/eslintrc'
-
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = dirname(__filename)
-
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-})
+import { globalIgnores } from "eslint/config"
+import nextVitals from 'eslint-config-next/core-web-vitals'
+import nextTs from 'eslint-config-next/typescript'
+import prettier from 'eslint-config-prettier/flat'
 
 const eslintConfig = [
-  ...compat.extends('next/core-web-vitals', 'next/typescript'),
+  // Next.js configs
+  ...nextVitals,
+  ...nextTs,
+
+  // Prettier
+  prettier,
+
   {
+    settings: {
+      react: {
+        version: '19.2.6' // Use your actual React version
+      }
+    }
+  },
+
+  // Your custom rules
+  {
+    files: ['**/*.{js,jsx,ts,tsx}'],
     rules: {
       '@typescript-eslint/ban-ts-comment': 'warn',
       '@typescript-eslint/no-empty-object-type': 'warn',
@@ -30,9 +40,16 @@ const eslintConfig = [
       ],
     },
   },
-  {
-    ignores: ['.next/', 'src/payload-types.ts', 'src/payload-generated-schema.ts'],
-  },
+  globalIgnores([
+    // Default ignores of eslint-config-next:
+    "out/**",
+    "build/**",
+    "next-env.d.ts",
+    '.next/**',
+    'node_modules/**',
+    'src/payload-types.ts',
+    'src/payload-generated-schema.ts',
+  ]),
 ]
 
 export default eslintConfig

@@ -12,3 +12,7 @@
 **/docs/**
 tsconfig.json
 
+.next/
+.turbo/
+pnpm-lock.yaml
+.pnpm-store/
