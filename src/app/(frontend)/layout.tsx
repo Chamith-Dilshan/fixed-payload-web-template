@@ -1,8 +1,7 @@
 import type { Metadata } from "next"
 
 import { cn } from "@/utilities/ui"
-import { GeistMono } from "geist/font/mono"
-import { GeistSans } from "geist/font/sans"
+import { Geist_Mono, Geist_Pixel } from "next/font/google"
 import React from "react"
 
 import { AdminBar } from "@/components/AdminBar"
@@ -16,6 +15,18 @@ import { draftMode } from "next/headers"
 import "./globals.css"
 import { getServerSideURL } from "@/utilities/getURL"
 
+const fontMono = Geist_Mono({
+  weight: ["400"],
+  subsets: ["latin"],
+  variable: "--font-mono",
+})
+
+const fontSans = Geist_Pixel({
+  weight: ["400"],
+  subsets: ["latin"],
+  variable: "--font-sans",
+})
+
 export default async function RootLayout({
   children,
 }: {
@@ -25,7 +36,7 @@ export default async function RootLayout({
 
   return (
     <html
-      className={cn(GeistSans.variable, GeistMono.variable)}
+      className={cn("antialiased", fontSans.variable, fontMono.variable)}
       lang="en"
       suppressHydrationWarning
     >
