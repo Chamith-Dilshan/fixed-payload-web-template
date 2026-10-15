@@ -12,7 +12,7 @@ export const HighImpactHero: React.FC<Page["hero"]> = ({
   richText,
 }) => {
   return (
-    <div className="relative mt-[-10.4rem] flex items-center justify-center text-white">
+    <div className="relative mt-[-10.4rem] flex items-center justify-center text-primary">
       <div className="relative z-10 container mb-8 flex items-center justify-center">
         <div className="max-w-146 md:text-center">
           {richText && (

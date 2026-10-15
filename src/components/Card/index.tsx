@@ -1,4 +1,5 @@
 "use client"
+
 import { cn } from "cn"
 import useClickableCard from "@/utilities/useClickableCard"
 import Link from "next/link"

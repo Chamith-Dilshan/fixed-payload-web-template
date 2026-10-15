@@ -13,8 +13,8 @@ interface HeaderClientProps {
 
 export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
   return (
-    <header className="relative z-20 container bg-red-600">
-      <div className="flex justify-between py-8">
+    <header className="relative z-20 max-width-container">
+      <div className="flex justify-between px-3 py-5">
         <Link href="/">
           <Logo loading="eager" priority="high" className="invert" />
         </Link>
