@@ -7,6 +7,7 @@ import React from 'react'
 import { Search } from '@/search/Component'
 import PageClient from './page.client'
 import { CardPostData } from '@/components/Card'
+import { Section } from '@/components/base/Section'
 
 type Args = {
   searchParams: Promise<{
@@ -60,24 +61,26 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
   })
 
   return (
-    <div className="pt-24 pb-24">
+    <main>
       <PageClient />
-      <div className="container mb-16">
+      <Section>
         <div className="prose dark:prose-invert max-w-none text-center">
-          <h1 className="mb-8 lg:mb-16">Search</h1>
+          <h1 className="title-gap">Search</h1>
 
-          <div className="max-w-200 mx-auto">
+          <div className="mx-auto max-w-3xl">
             <Search />
           </div>
         </div>
-      </div>
+      </Section>
 
       {posts.totalDocs > 0 ? (
         <CollectionArchive posts={posts.docs as CardPostData[]} />
       ) : (
-        <div className="container">No results found.</div>
+        <Section>
+          <p className="text-center text-muted-foreground">No results found.</p>
+        </Section>
       )}
-    </div>
+    </main>
   )
 }
 

@@ -19,7 +19,7 @@ export default function NotFound() {
 
         {/* Heading & Description */}
         <div className="max-w-2xl">
-          <h2 className="mb-4 text-3xl font-bold text-primary">
+          <h2 className="mb-4 text-foreground">
             Page Not Found
           </h2>
           <p className="text-lg text-muted-foreground">
@@ -29,7 +29,7 @@ export default function NotFound() {
 
         {/* Buttons */}
         <div className="flex flex-col gap-4 sm:flex-row">
-          <Button className="bg-secondary px-8 py-3 font-semibold text-primary hover:bg-accent-foreground hover:text-accent">
+          <Button variant="secondary" size="lg">
             <Link href="/" className="flex items-center gap-2">
               <Home size={20} />
               Go Home

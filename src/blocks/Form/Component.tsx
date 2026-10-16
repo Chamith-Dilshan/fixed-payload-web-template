@@ -6,6 +6,7 @@ import React, { useCallback, useState } from 'react'
 import { useForm, FormProvider } from 'react-hook-form'
 import RichText from '@/components/RichText'
 import { Button } from '@/components/ui/button'
+import { Section } from '@/components/base/Section'
 import type { DefaultTypedEditorState } from '@payloadcms/richtext-lexical'
 
 import { fields } from './fields'
@@ -114,11 +115,11 @@ export const FormBlock: React.FC<
   )
 
   return (
-    <div className="container lg:max-w-3xl">
+    <Section containerClassName="max-w-3xl">
       {enableIntro && introContent && !hasSubmitted && (
-        <RichText className="mb-8 lg:mb-12" data={introContent} enableGutter={false} />
+        <RichText className="title-gap" data={introContent} enableGutter={false} />
       )}
-      <div className="p-4 lg:p-6 border border-border rounded-[0.8rem]">
+      <div className="rounded-lg border border-border bg-card p-4 text-card-foreground md:p-6">
         <FormProvider {...formMethods}>
           {!isLoading && hasSubmitted && confirmationType === 'message' && (
             <RichText data={confirmationMessage} />
@@ -158,6 +159,6 @@ export const FormBlock: React.FC<
           )}
         </FormProvider>
       </div>
-    </div>
+    </Section>
   )
 }

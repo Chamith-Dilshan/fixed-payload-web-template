@@ -3,7 +3,7 @@ import { cn } from "cn"
 
 interface SectionProps extends ComponentPropsWithoutRef<"section"> {
   children: ReactNode
-  className?: string // background color overrides only (bg-*)
+  className?: string
   containerClassName?: string
 }
 

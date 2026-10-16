@@ -19,7 +19,7 @@ export const Card: React.FC<{
   showCategories?: boolean
   title?: string
 }> = (props) => {
-  const { card, link } = useClickableCard({})
+  const { cardRef, linkRef } = useClickableCard({})
   const {
     className,
     doc,
@@ -40,10 +40,10 @@ export const Card: React.FC<{
   return (
     <article
       className={cn(
-        "overflow-hidden rounded-lg border border-border bg-card hover:cursor-pointer",
+        "overflow-hidden rounded-lg border border-border bg-card text-card-foreground hover:cursor-pointer",
         className
       )}
-      ref={card.ref}
+      ref={cardRef}
     >
       <div className="relative w-full">
         {!metaImage && <div className="">No image</div>}
@@ -75,13 +75,11 @@ export const Card: React.FC<{
           </div>
         )}
         {titleToUse && (
-          <div className="prose">
-            <h3>
-              <Link className="not-prose" href={href} ref={link.ref}>
-                {titleToUse}
-              </Link>
-            </h3>
-          </div>
+          <h3>
+            <Link href={href} ref={linkRef}>
+              {titleToUse}
+            </Link>
+          </h3>
         )}
         {description && (
           <div className="mt-2">
