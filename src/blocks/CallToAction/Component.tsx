@@ -4,12 +4,14 @@ import type { CallToActionBlock as CTABlockProps } from '@/payload-types'
 
 import RichText from '@/components/RichText'
 import { CMSLink } from '@/components/Link'
+import { Section } from '@/components/base/Section'
+import { Card } from '@/components/ui/card'
 
 export const CallToActionBlock: React.FC<CTABlockProps> = ({ links, richText }) => {
   return (
-    <div className="container">
-      <div className="bg-card rounded border-border border p-4 flex flex-col gap-8 md:flex-row md:justify-between md:items-center">
-        <div className="max-w-3xl flex items-center">
+    <Section>
+      <Card className="flex flex-col gap-8 border border-border p-4 md:flex-row md:items-center md:justify-between">
+        <div className="flex max-w-3xl items-center">
           {richText && <RichText className="mb-0" data={richText} enableGutter={false} />}
         </div>
         <div className="flex flex-col gap-8">
@@ -17,7 +19,7 @@ export const CallToActionBlock: React.FC<CTABlockProps> = ({ links, richText }) 
             return <CMSLink key={i} size="lg" {...link} />
           })}
         </div>
-      </div>
-    </div>
+      </Card>
+    </Section>
   )
 }

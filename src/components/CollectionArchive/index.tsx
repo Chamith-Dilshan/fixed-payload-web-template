@@ -1,37 +1,36 @@
 import { cn } from "cn"
 import React from "react"
 
+import { Section } from "@/components/base/Section"
 import { Card, CardPostData } from "@/components/Card"
 
 export type Props = {
+  className?: string
   posts: CardPostData[]
 }
 
 export const CollectionArchive: React.FC<Props> = (props) => {
-  const { posts } = props
+  const { className, posts } = props
 
   return (
-    <div className={cn("container")}>
-      <div>
-        <div className="grid grid-cols-4 gap-x-4 gap-y-4 sm:grid-cols-8 lg:grid-cols-12 lg:gap-x-8 lg:gap-y-8 xl:gap-x-8">
-          {posts?.map((result, index) => {
-            if (typeof result === "object" && result !== null) {
-              return (
-                <div className="col-span-4" key={index}>
-                  <Card
-                    className="h-full"
-                    doc={result}
-                    relationTo="posts"
-                    showCategories
-                  />
-                </div>
-              )
-            }
+    <Section className={cn(className)}>
+      <div className="grid grid-cols-1 items-stretch gap-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+        {posts?.map((result, index) => {
+          if (typeof result === "object" && result !== null) {
+            return (
+              <Card
+                className="h-full"
+                doc={result}
+                key={index}
+                relationTo="posts"
+                showCategories
+              />
+            )
+          }
 
-            return null
-          })}
-        </div>
+          return null
+        })}
       </div>
-    </div>
+    </Section>
   )
 }

@@ -7,6 +7,7 @@ import RichText from "@/components/RichText"
 import type { MediaBlock as MediaBlockProps } from "@/payload-types"
 
 import { Media } from "../../components/Media"
+import { Section } from "@/components/base/Section"
 
 type Props = MediaBlockProps & {
   breakout?: boolean
@@ -32,16 +33,8 @@ export const MediaBlock: React.FC<Props> = (props) => {
   let caption
   if (media && typeof media === "object") caption = media.caption
 
-  return (
-    <div
-      className={cn(
-        "",
-        {
-          container: enableGutter,
-        },
-        className
-      )}
-    >
+  const content = (
+    <>
       {(media || staticImage) && (
         <Media
           imgClassName={cn(
@@ -53,18 +46,20 @@ export const MediaBlock: React.FC<Props> = (props) => {
         />
       )}
       {caption && (
-        <div
-          className={cn(
-            "mt-6",
-            {
-              container: !disableInnerContainer,
-            },
-            captionClassName
-          )}
-        >
+        <div className={cn("mt-4", !disableInnerContainer && "max-width-container", captionClassName)}>
           <RichText data={caption} enableGutter={false} />
         </div>
       )}
-    </div>
+    </>
   )
+
+  if (enableGutter) {
+    return (
+      <Section className={className}>
+        {content}
+      </Section>
+    )
+  }
+
+  return <div className={cn("section-container", className)}>{content}</div>
 }
