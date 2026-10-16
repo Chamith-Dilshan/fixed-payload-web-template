@@ -1,5 +1,7 @@
 # Payload CMS Web Template — With issues fixed and migration already done so you don't have to
 
+[Find the official Payload web templat here ](https://github.com/payloadcms/payload/tree/main/templates/website)
+
 I created a new Payload CMS project using the official website template but I encountered few issues with the template so I fixed it.
 you can directly use this as the payload improved web template. and you can see what is the differetn between offical and this one. 
 This project has following versions:
